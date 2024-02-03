@@ -1,60 +1,28 @@
-const getUsersWithFriend = (users, friendName) => {
-  return users.filter(user => user.friends.includes(friendName));
-};
-// Ця функція використовує метод filter() для створення нового масиву friends який повинен містити ім'я друга friendName.
-const allUsers = [
-  {
-    name: "Moore Hensley",
-    friends: ["Sharron Pace"]
-  },
-  {
-    name: "Sharlene Bush",
-    friends: ["Briana Decker", "Sharron Pace"]
-  },
-  {
-    name: "Ross Vazquez",
-    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"]
-  },
-  {
-    name: "Elma Head",
-    friends: ["Goldie Gentry", "Aisha Tran"]
-  },
-  {
-    name: "Carey Barr",
-    friends: ["Jordan Sampson", "Eddie Strong"]
-  },
-  {
-    name: "Blackburn Dotson",
-    friends: ["Jacklyn Lucas", "Linda Chapman"]
-  },
-  {
-    name: "Sheree Anthony",
-    friends: ["Goldie Gentry", "Briana Decker"]
+class Storage {
+  constructor(items) {
+    this.items = items;
   }
-];
+// Клас Storage представляє сховище для зберігання елементів. В конструкторі класу передається масив items, який буде зберігатися в об'єкті.
+  getItems() {
+    return this.items;
+  }
+// Метод getItems() повертає масив items.
+  addItem(newItem) {
+    this.items.push(newItem);
+  }
+// Метод addItem(newItem) додає новий елемент в масив items.
+  removeItem(itemToRemove) {
+    this.items = this.items.filter(item => item !== itemToRemove);
+  }
+  // Метод removeItem(itemToRemove) видаляє елемент з масиву items, якщо він дорівнює itemToRemove.
+}
 
-console.log(getUsersWithFriend(allUsers, "Briana Decker")); 
-// [
-//   {
-//     name: "Sharlene Bush",
-//     friends: ["Briana Decker", "Sharron Pace"]
-//   },
-//   {
-//     name: "Sheree Anthony",
-//     friends: ["Goldie Gentry", "Briana Decker"]
-//   }
-// ]
-
-console.log(getUsersWithFriend(allUsers, "Goldie Gentry"));
-// [
-//   {
-//     name: "Elma Head",
-//     friends: ["Goldie Gentry", "Aisha Tran"]
-//   },
-//   {
-//     name: "Sheree Anthony",
-//     friends: ["Goldie Gentry", "Briana Decker"]
-//   }
-// ]
-
-console.log(getUsersWithFriend(allUsers, "Adrian Cross" )); // []
+const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+storage.addItem("Droid");
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+storage.removeItem("Prolonger");
+console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+// У цьому прикладі ми створюємо об'єкт storage класу Storage з масивом ["Nanitoids", "Prolonger", "Antigravitator"]. 
+// Потім ми додаємо елемент "Droid" до масиву items методом addItem().Після цього ми видаляємо елемент "Prolonger" з масиву items методом removeItem().
+// В кінцевому результаті ми отримаємо масив["Nanitoids", "Antigravitator", "Droid"].

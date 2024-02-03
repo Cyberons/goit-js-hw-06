@@ -1,41 +1,37 @@
-const getUserNames = users => users.map(user => user.name);
-// Функція 'getUserNames', приймає масив об'єктів 'users'. Далі, функція використовує метод 'map' для перетворення кожного об'єкта користувача на його властивість 'name'.
-console.log(
-  getUserNames([
-  {
-    name: "Moore Hensley",
-    email: "moorehensley@indexia.com",
-    balance: 2811
+const customer = {
+  username: "Mango",
+  balance: 24000,
+  discount: 0.1,
+  orders: ["Burger", "Pizza", "Salad"],
+  // У цьому коді ми створюємо об'єкт customer з певними властивостями, такими як ім'я користувача, баланс, знижка та історію замовлень. Окрім того, ми визначаємо методи для роботи з цими властивостями.
+
+  // Змінений код початок
+  getBalance() {
+    return this.balance;
   },
-  {
-    name: "Sharlene Bush",
-    email: "sharlenebush@tubesys.com",
-    balance: 3821
+  // Метод getBalance() повертає поточний баланс користувача.
+  getDiscount() {
+    return this.discount;
   },
-  {
-    name: "Ross Vazquez",
-    email: "rossvazquez@xinware.com",
-    balance: 3793
+  // Метод getDiscount() повертає поточне значення знижки.
+  setDiscount(value) {
+    this.discount = value;
   },
-  {
-    name: "Elma Head",
-    email: "elmahead@omatom.com",
-    balance: 2278
+  // Метод setDiscount(value) змінює значення знижки на вказаний параметр value.
+  getOrders() {
+    return this.orders;
   },
-  {
-    name: "Carey Barr",
-    email: "careybarr@nurali.com",
-    balance: 3951
+  // Метод getOrders() повертає масив замовлень користувача.
+  addOrder(cost, order) {
+    this.balance -= cost - cost * this.discount;
+    this.orders.push(order);
   },
-  {
-    name: "Blackburn Dotson",
-    email: "blackburndotson@furnigeer.com",
-    balance: 1498
-  },
-  {
-    name: "Sheree Anthony",
-    email: "shereeanthony@kog.com",
-    balance: 2764
-  },
-])
-); // ["Moore Hensley", "Sharlene Bush", "Ross Vazquez", "Elma Head", "Carey Barr", "Blackburn Dotson", "Sheree Anthony"]
+  // Метод addOrder(cost, order) додає нове замовлення в масив замовлень. Він також зменшує баланс користувача на вартість замовлення з урахуванням знижки.
+  // Змінений код кінець
+};
+
+customer.setDiscount(0.15);
+console.log(customer.getDiscount()); // 0.15
+customer.addOrder(5000, "Steak");
+console.log(customer.getBalance()); // 19750
+console.log(customer.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
