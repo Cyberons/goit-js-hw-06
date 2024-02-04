@@ -3,25 +3,25 @@ const customer = {
   balance: 24000,
   discount: 0.1,
   orders: ["Burger", "Pizza", "Salad"],
-  // У цьому коді ми створюємо об'єкт customer з певними властивостями, такими як ім'я користувача, баланс, знижка та історію замовлень. Окрім того, ми визначаємо методи для роботи з цими властивостями.
+  // У цьому коді ми створюємо об'єкт customer з певними властивостями, такими як ім'я користувача, баланс, знижка та історію замовлень.
 
   // Змінений код початок
   getBalance() {
     return this.balance;
   },
-  // Метод getBalance() повертає поточний баланс користувача.
+
   getDiscount() {
     return this.discount;
   },
-  // Метод getDiscount() повертає поточне значення знижки.
+  
   setDiscount(value) {
     this.discount = value;
   },
-  // Метод setDiscount(value) змінює значення знижки на вказаний параметр value.
+
   getOrders() {
     return this.orders;
   },
-  // Метод getOrders() повертає масив замовлень користувача.
+  
   addOrder(cost, order) {
     this.balance -= cost - cost * this.discount;
     this.orders.push(order);
