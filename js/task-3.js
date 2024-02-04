@@ -1,28 +1,26 @@
 class StringBuilder {
+  #value;
   constructor(initialValue = "") {
-    this.value = initialValue;
+    this.#value = initialValue;
   }
-// Оголошення класу StringBuilder з ініціалізацією екземпляра й викликами методів.
+// Declaration of StringBuilder class with instance initialization and method calls.
   getValue() {
-    return this.value;
+    return this.#value;
   }
-// Метод getValue повертає поточне значення приватної властивості value.
-  padEnd(str) {
-    this.value += str;
-    return this;
+// The getValue method returns the current value of the value private property.
+  padStart(str) {
+    this.#value = str + this.#value;
   }
 
-  padStart(str) {
-    this.value = str + this.value;
-    return this;
+  padEnd(str) {
+    this.#value += str;
   }
 
   padBoth(str) {
     this.padStart(str);
     this.padEnd(str);
-    return this;
   }
-  // Методи padStart, padEnd та padBoth додають відповідно на початок, в кінець та з обох сторін значення приватної властивості value об'єкта, який викликає ці методи.
+  // The padStart, padEnd, and padBoth methods add to the beginning, end, and both sides, respectively, of the value of the private property value of the object that calls these methods.
 }
 
 const builder = new StringBuilder(".");
